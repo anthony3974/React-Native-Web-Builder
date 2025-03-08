@@ -15,7 +15,7 @@ export default function App() {
   const [prosACons, setProsACons] = useState(Array(8).fill(''))
 
 
-  const showOutput = (text, title, isFile) => {
+  const showOutput = (text, title, isFile, prosACons) => {
     const fileType = isFile ? "file" : "Exe";
     const titleNoSpace = title.replace(/\s+/g, '')
     const media = isVideo ? `<video controls width="940" height="660" class="video-container">
@@ -24,7 +24,21 @@ export default function App() {
                             </video>` :
       `<img src="${titleNoSpace}\\${titleNoSpace}_img.png" alt="Image Description"></img>`
     const fileTypeString = isFile ? "txt" : "exe"
-
+    
+    var pros = ''
+    for (let index = 0; index < 4; index++) {
+      const element = prosACons[index];
+      if (element != ''){
+        pros += `<li>${element}</li>\n\t`
+      }
+    }
+    var cons = ''
+    for (let index = 4; index < 8; index++) {
+      const element = prosACons[index];
+      if (element != ''){
+        cons += `<li>${element}</li>\n\t`
+      }
+    } 
 
     setFolderOutput(`${titleNoSpace}`)
     setImgOutput(`${titleNoSpace}_img.png`)
@@ -40,6 +54,12 @@ export default function App() {
       </div>
       <div class="text-content">
       <p>${text}</p>
+      <label for="pro">Pros</label>
+      <ul id="pro">
+      ${pros}</ul>
+      <label for="con">Cons</label>
+      <ul id="con">
+      ${cons}</ul>
       <a href="${titleNoSpace}\\${titleNoSpace}_${fileTypeString}.${fileTypeString}" download class="download-btn">Download ${fileType}</a>
       </div>
       </div>
@@ -49,7 +69,7 @@ export default function App() {
   }
 
   const update = () => {
-    showOutput(text, title, isFile)
+    showOutput(text, title, isFile, prosACons)
   }
 
   const handleProsConsChange = (index, value) => {
@@ -224,4 +244,4 @@ const styles = StyleSheet.create({
   text: {
     margin: 10
   }
-});
+})
