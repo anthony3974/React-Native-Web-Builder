@@ -192,7 +192,7 @@ export default function App() {
             </Text>
           </View>
 
-          <Text style={styles.text}>
+          <Text style={[styles.text, styles.flexWrap]}>
             {output}
           </Text>
         </View>
@@ -243,5 +243,9 @@ const styles = StyleSheet.create({
   },
   text: {
     margin: 10
+  },
+  flexWrap: {
+    flexWrap: 'wrap',
+    width: 500
   }
 })
