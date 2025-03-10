@@ -8,7 +8,7 @@ export default function App() {
   const [text, setText] = useState('');
   const [output, setOutput] = useState('');
   const [imgOutput, setImgOutput] = useState('');
-  const [fileName, setfileName] = useState('');
+  const [fileName, setFileName] = useState('');
   const [folderOutput, setFolderOutput] = useState('');
   const [isFile, setFile] = useState(false);
   const [isVideo, setVideo] = useState(false);
@@ -42,7 +42,7 @@ export default function App() {
 
     setFolderOutput(`${titleNoSpace}`)
     setImgOutput(`${titleNoSpace}_img.png`)
-    setfileName(`${titleNoSpace}_${fileTypeString}.${fileTypeString}`)
+    setFileName(`${titleNoSpace}_${fileTypeString}.${fileTypeString}`)
 
     setOutput(
       `
@@ -168,7 +168,7 @@ export default function App() {
 
           <View style={[styles.horizontal, styles.smallContainer]}>
             <Text style={styles.text}>
-              Foler Path:
+              Folder Path:
             </Text>
             <Text style={styles.text}>
               {folderOutput}
